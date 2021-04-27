@@ -12,11 +12,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.util.Pair;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -124,7 +119,7 @@ class BookControllerTest extends BaseControllerTest {
 
         when(bookService.edit(reqItem)).thenReturn(reqItem);
 
-        ResultActions result = performPutWithRequestBodyAndPathVariable(BOOKS + ENTITY, reqItem, id);
+        ResultActions result = performPatchWithRequestBodyAndPathVariable(BOOKS, reqItem, id);
         result.andExpect(status().isOk())
                 .andExpect(jsonContentToBe(reqItem));
     }

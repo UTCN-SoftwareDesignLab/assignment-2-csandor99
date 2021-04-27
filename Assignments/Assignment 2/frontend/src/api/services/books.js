@@ -35,13 +35,19 @@ export default {
     });
   },
   sell(book) {
-    return HTTP.patch(BASE_URL + "/books/" + book.id, {
-      headers: authHeader(),
-    }).then((response) => {
+    return HTTP.patch(
+      BASE_URL + "/books/" + book.id,
+      {},
+      {
+        headers: authHeader(),
+      }
+    ).then((response) => {
       return response.data;
     });
   },
-  generateReport(type){
-    return HTTP.get(BASE_URL + "/books/export/" + type, { headers: authHeader() })
+  generateReport(type) {
+    return HTTP.get(BASE_URL + "/books/export/" + type, {
+      headers: authHeader(),
+    });
   },
 };

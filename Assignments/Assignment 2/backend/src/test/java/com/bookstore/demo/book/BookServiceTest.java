@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -41,31 +42,26 @@ class BookServiceTest {
         Assertions.assertEquals(books.size(), all.size());
     }
 
-    @Test
-    void findById(){
-
-    }
 
     @Test
     void create(){
+        Book book = Book.builder()
+                .id(1L)
+                .title("Title")
+                .author("Author")
+                .genre("Genre")
+                .price(5)
+                .quantity(8)
+                .build();
+
+        when(bookRepository.save(book)).thenReturn(book);
+
+        BookDTO bookDTO = bookService.create(bookMapper.toDto(book));
+
+        Assertions.assertEquals(bookMapper.toDto(book),bookDTO);
 
     }
 
-
-    @Test
-    void edit(){
-
-    }
-
-    @Test
-    void get(){
-
-    }
-
-    @Test
-    void delete(){
-
-    }
 
 
 }

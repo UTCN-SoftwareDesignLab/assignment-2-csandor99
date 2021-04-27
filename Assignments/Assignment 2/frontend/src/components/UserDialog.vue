@@ -11,7 +11,8 @@
         </v-toolbar>
         <v-form>
           <v-text-field v-model="user.username" label="Username" />
-          <v-text-field v-model="user.email" label="Email" disabled/>
+          <v-text-field v-if="!isNew" v-model="user.email" label="Email" disabled/>
+          <v-text-field v-else v-model="user.email" label="Email" />
           <v-text-field v-model="user.password" label="Password" />
         </v-form>
         <v-card-actions>

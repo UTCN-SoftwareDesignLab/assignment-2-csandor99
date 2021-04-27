@@ -69,7 +69,7 @@ export default {
       router.push("/users")
     },
     reportPDF(){
-      api.books.generateReport("PDF");
+      api.books.generateReport("PDF")
     },
     reportCSV(){
       api.books.generateReport("CSV")

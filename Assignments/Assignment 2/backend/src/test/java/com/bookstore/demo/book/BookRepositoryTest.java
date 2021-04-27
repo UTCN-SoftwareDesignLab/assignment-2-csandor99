@@ -2,32 +2,18 @@ package com.bookstore.demo.book;
 
 import com.bookstore.demo.TestCreationFactory;
 import com.bookstore.demo.book.model.Book;
-import com.bookstore.demo.book.model.dto.BookDTO;
 import com.bookstore.demo.user.RoleRepository;
 import com.bookstore.demo.user.UserRepository;
-import com.bookstore.demo.user.model.ERole;
-import com.bookstore.demo.user.model.Role;
-import com.bookstore.demo.user.model.User;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
 
-import static com.bookstore.demo.TestCreationFactory.randomString;
-import static com.bookstore.demo.book.ItemSpecifications.*;
-import static com.bookstore.demo.user.model.ERole.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.data.domain.Sort.Direction.ASC;
 
 @SpringBootTest
 public class BookRepositoryTest {

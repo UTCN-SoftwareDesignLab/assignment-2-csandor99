@@ -34,4 +34,56 @@ class BookServiceIntegrationTest {
 
         Assertions.assertEquals(items.size(), all.size());
     }
+
+    @Test
+    void edit(){
+        BookDTO book = BookDTO.builder()
+                .title("Title")
+                .author("Author")
+                .genre("Genre")
+                .price(10)
+                .quantity(10)
+                .build();
+
+        BookDTO returned = bookService.create(book);
+        returned.setTitle("New title");
+
+        BookDTO newBook = bookService.edit(returned);
+
+        Assertions.assertEquals(book.getAuthor(), newBook.getAuthor());
+    }
+
+    @Test
+    void delete(){
+        BookDTO book = BookDTO.builder()
+                .title("Title")
+                .author("Author")
+                .genre("Genre")
+                .price(10)
+                .quantity(10)
+                .build();
+
+        BookDTO newBook = bookService.create(book);
+        Assertions.assertEquals(1, bookService.findAll().size());
+
+        bookService.delete(newBook.getId());
+        Assertions.assertEquals(0, bookService.findAll().size());
+    }
+
+    @Test
+    void sell(){
+        BookDTO book = BookDTO.builder()
+                .title("Title")
+                .author("Author")
+                .genre("Genre")
+                .price(10)
+                .quantity(10)
+                .build();
+
+        BookDTO returned = bookService.create(book);
+
+        BookDTO newBook = bookService.sell(returned.getId());
+
+        Assertions.assertEquals(returned.getQuantity()-1, newBook.getQuantity());
+    }
 }
